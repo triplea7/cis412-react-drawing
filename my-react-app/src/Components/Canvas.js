@@ -16,7 +16,6 @@ function Canvas({ color, size }) {
     canvas.width = rect.width;
     canvas.height = rect.height;
 
-    // Scale the context to match the new size
     context.scale(rect.width / canvas.width, rect.height / canvas.height);
   }, []);
 
@@ -26,7 +25,6 @@ function Canvas({ color, size }) {
     context.strokeStyle = color;
     context.lineWidth = size;
 
-    // mousedown events, start drawing
     const startMouseDown = (e) => {
       const { offsetX, offsetY } = e;
       context.beginPath();
@@ -34,7 +32,6 @@ function Canvas({ color, size }) {
       setMouseDown(true);
     };
 
-    // drawing
     const drawing = (e) => {
       if (!mouseDown) {
         return;
@@ -44,7 +41,6 @@ function Canvas({ color, size }) {
       context.stroke();
     };
 
-    // mouseup, stop drawing
     const mouseUp = () => {
       context.closePath();
       setMouseDown(false);
